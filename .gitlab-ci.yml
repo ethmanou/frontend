@@ -16,8 +16,7 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
-stages:  
-  - commit        # List of stages for jobs, and their order of execution
+stages:         # List of stages for jobs, and their order of execution
   - build
   - test
   - deploy
@@ -44,6 +43,7 @@ lint-test-job:   # This job also runs in the test stage.
   stage: test    # It can run at the same time as unit-test-job (in parallel).
   script:
     - echo "Linting code... This will take about 10 seconds."
+    - ng lint
     - sleep 10
     - echo "No lint issues found."
 
