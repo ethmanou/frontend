@@ -10,7 +10,7 @@ import { ReglesComponent } from './regles/regles.component';
 import { ContactComponent } from './contact/contact.component';
 import { PlayComponent } from './play/play.component';
 import { CreateaccountComponent } from './createaccount/createaccount.component';
-import { SessionComponent } from './play/session/session.component';
+import { SessionComponent } from './session/session.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { SessionComponent } from './play/session/session.component';
     ContactComponent,
     PlayComponent,
     CreateaccountComponent,
-    SessionComponent
+    SessionComponent,
   ],
   imports: [
     BrowserModule,

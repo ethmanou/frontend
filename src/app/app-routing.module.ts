@@ -6,13 +6,15 @@ import { ReglesComponent } from './regles/regles.component';
 import { ContactComponent } from './contact/contact.component';
 import { PlayComponent } from './play/play.component';
 import { CreateaccountComponent} from './createaccount/createaccount.component';
+import { SessionComponent } from './session/session.component';
 const routes: Routes = [
   {path:'',component:AccueilComponent},
   {path:'accueil',component: AccueilComponent},
   {path:'règles',component: ReglesComponent },
   {path:'contact',component: ContactComponent},
   {path:'play',component: PlayComponent}  ,
-  {path:'createaccount',component: CreateaccountComponent}   
+  {path:'createaccount',component: CreateaccountComponent},
+  {path:'session',component: SessionComponent}
  
 ];
 
