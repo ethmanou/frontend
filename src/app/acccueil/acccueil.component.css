@@ -1,14 +1,46 @@
-body{
-  background-color: #ffffff;
-  
+
+.text-blue-600 {
+    color: #0077F7; 
+    background-color: #FFFFFF;
+    border-radius: 5px; 
+    padding: 10px 20px;
+    border: 1px solid #0077F7; 
+    cursor: pointer; 
+    transition-delay: 150ms;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-form {
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+  .my-button {
+    width: 150px;
+    height: 40px;
+    background-color: #ffe570;
+    color: #020101;
+    cursor: pointer; 
+    border-radius: 5px; 
+    padding: 10px 20px;
+    border: 1px solid;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  .my-button:hover{
+    transform: scale(1.1); /* Augmente la taille du bouton de 10% lorsqu'il est survolé */
+    background-color: #61e0e6; /* Nouvelle couleur de fond */
+    color: #000; /* Nouvelle couleur du texte */
+  }
+ 
+  .text-blue-600:hover {
+    background-color:#61e0e6; /* New background color on hover/focus */
+    color: #0d0707; /* New text color on hover/focus */
+    transform: scale(1.1);
+  }
+  .nouveau-fond {
+    background-color: #188c7d; 
 }
 
 .flex {
@@ -245,4 +277,92 @@ form {
 .hover\:text-indigo-500:hover {
   --tw-text-opacity: 1;
   color: rgba(99, 102, 241, var(--tw-text-opacity));
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+.container {
+  background-color: #ffffff;
+  position: relative;
+}
+.background-shape {
+  position: absolute;
+  inset: 0;
+  top: -160px;
+  z-index: -10;
+  overflow: hidden;
+  filter: blur(20px);
+  transform: rotate(30deg);
+}
+.foreground-shape {
+  position: absolute;
+  inset: 0;
+  top: calc(100% - 208px);
+  z-index: -10;
+  overflow: hidden;
+  filter: blur(20px);
+}
+.header {
+  text-align: center;
+  padding: 24px;
+  padding-right: 32px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #012052;
+  line-height: 1.25;
+}
+.header p {
+  margin-top: 24px;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #070808;
+}
+.form-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+button {
+  border: none;
+  border-radius: 8px;
+  background-color: #000000;
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.75;
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.1);
+  transition: background-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #333333;
+}
+.image-container {
+  text-align: center;
+}
+img {
+  max-width: 100%;
 }

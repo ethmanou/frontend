@@ -113,7 +113,6 @@ header{
     text-align: center;
 }
 
-
 .header-status-info-container,
 .header-button-container,
 .header-score-container,
@@ -200,7 +199,6 @@ header{
     to{opacity: 1;}
 }
 
-
 .card.shuffle-left{
     transform: translateX(300px) translateY(40px);
 }
@@ -225,6 +223,7 @@ header{
     .current-status{
         font-size:1.2rem;
     }
+
     .game-play-button-container{
         width: 120px;
         height: 40px;
