@@ -40,6 +40,9 @@ unit-test-job:   # This job runs in the test stage.
 setup:
   stage: setup
   script:
+    - apt-get update -qy
+    - apt-get install -y nodejs
+    - apt-get install -y npm
     - npm install -g @angular/cli
 
 lint:
