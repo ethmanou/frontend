@@ -20,7 +20,6 @@ stages:         # List of stages for jobs, and their order of execution
   - build
   - test
   - deploy
-  - setup
   - lint
   
     
@@ -37,17 +36,13 @@ unit-test-job:   # This job runs in the test stage.
     - sleep 60
     - echo "Code coverage is 90%"
 
-setup:
-  stage: setup
-  script:
+lint:
+  stage: lint
+  script: 
     - apt-get update -qy
     - apt-get install -y nodejs
     - apt-get install -y npm
     - npm install -g @angular/cli
-
-lint:
-  stage: lint
-  script: 
     - ng lint
 
 
