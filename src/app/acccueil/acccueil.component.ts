@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Client } from 'colyseus.js';
 
-export const client = new Client('ws://10.50.50.6:2567');
+export const client = new Client('ws://13.48.138.37:2567');
 export let room: any;
 
 @Component({
