@@ -1,55 +1,55 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { client, room } from '../acccueil/acccueil.component';
+import { state, style, transition, trigger, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-session',
   templateUrl: './session.component.html',
-  styleUrls: ['./session.component.css']
+  styleUrls: ['./session.component.css'],
+  animations: [
+    trigger('hideAnimation', [
+      state('void', style({ opacity: 0 })),
+      transition(':enter', [
+        animate('0.5s', style({ transform: 'translateX(0)', opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate('0.5s', style({ transform: 'translateX(100px)', opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
-export class SessionComponent {
+export class SessionComponent implements OnInit {
+  //playerHands: PlayerHand[] = [];
+  playerId: string = "north";
+  player1Hand: string[] = []; // Déclarez les cartes de la main du joueur 1
+  player2Hand: string[] = []; // Déclarez les cartes de la main du joueur 2
+  player3Hand: string[] = []; // Déclarez les cartes de la main du joueur 3
+  player4Hand: string[] = []; // Déclarez les cartes de la main du joueur 4
+  playedCards: string[] = [];
 
-  constructor(private router: Router)
-  {
-    room.onStateChange((state: any) => this.draw(state));
+  constructor() {}
+
+  ngOnInit() {
+    this.player1Hand = ['7H', '8P', 'AP', 'QC', '10T'];
+    this.player2Hand = ['6H', '7P', '9P', 'KT', '7C'];
+    this.player3Hand = ['10H', 'KP', '8T', 'A', '9C'];
+    this.player4Hand = ['AH', '10P', '7T', '9T', '10C'];
+    //this.playedCard = '7H';
   }
 
-  draw(state: any)
-  {
-    if (state.contract == -1) // atout pas encore prix
-    {
-      // atout est dans state.trump
-      // les cartes du joueurs sont dans state.[North ou South ou East ou West].hands
-      // le tour est dans state.turn
-      // score dans state.teamBlue et state.teamRed
-    }
-    else // manches
-    {
-      // les cartes du joueurs sont dans state.[North ou South ou East ou West].hands
-      // cartes joues sur table sont state.chosen contenant {"North": "5D"} etc
-      // cartes choisies par le joueur state.[North ou South ou East ou West].chosenCard
-      // le tour est dans state.turn
-      // score dans state.teamBlue et state.teamRed
-      // numero de plie dans state.fold
-    }
-
-    // IMPORTANT: tu dois savoir la direction de ce joueur, soit North, South, East ou West
-    // donc cherce dans state.North, state.South etc celle qui nest pas vide
-    // quelque soit la direction il est toujours en bas dans le front end, et les autres sont dans la direction de la montre comme ca North -> East -> South -> West
-    // celle ci n'est important que pour mettre en accent a qui est le tour dans le front
-  }
-
-  handleClick(id: String)
-  {
-    if (room.state.contract == -1)
-    {
-      room.send("action", {take: true}); // ou bien false pour specifier si le joueur accept l atout
-    }
-    else // manche
-    {
-      room.send("action", {chosen: id}); // la carte choisie (ou clicker)
-      // moi qui gere si son tour ou non, pas de souci
-      // id="5S" par exeeple
+  selectCard(card: string, playerHand: string[]) {
+    const cardIndex = playerHand.indexOf(card);
+    if (cardIndex !== -1) {
+      // La carte a été trouvée dans la main du joueur
+      const selectedCard = playerHand.splice(cardIndex, 1)[0];
+      // Ajoutez la carte au tableau des cartes déjà jouées
+      
+      if (this.playedCards.length < 4) {
+        // Ajoutez la carte jouée au tableau des cartes jouées
+        this.playedCards.push(selectedCard);
+      }
     }
   }
+  
 }
