@@ -43,7 +43,7 @@ lint:
     - apt-get install -y nodejs
     - apt-get install -y npm
     - npm install
-    - npm install -g @angular-cli
+    - npm install -g @angular/cli
     - ng lint
 
 
