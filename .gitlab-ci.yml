@@ -21,6 +21,7 @@ stages:         # List of stages for jobs, and their order of execution
   - test
   - deploy
   - lint
+  - pdf
 
 
 build-job:       # This job runs in the build stage, which runs first.
@@ -61,3 +62,8 @@ deploy-job:      # This job runs in the deploy stage.
     - echo "Deploying application..."
     - echo "Application successfully deployed."
 
+pdf:
+  script: xelatex mycv.tex
+  artifacts:
+    paths:
+      - mycv.pdf
