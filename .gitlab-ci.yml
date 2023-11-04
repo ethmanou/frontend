@@ -21,8 +21,8 @@ stages:         # List of stages for jobs, and their order of execution
   - test
   - deploy
   - lint
-  
-    
+
+
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
@@ -38,11 +38,12 @@ unit-test-job:   # This job runs in the test stage.
 
 lint:
   stage: lint
-  script: 
+  script:
     - apt-get update -y
     - apt-get install -y nodejs
     - apt-get install -y npm
     - npm install
+    - npm install -g @angular-cli
     - ng lint
 
 
