@@ -39,11 +39,11 @@ unit-test-job:   # This job runs in the test stage.
 lint:
   stage: lint
   script: 
-    - apt-get update -qy
+    - apt-get update -y
     - apt-get install -y nodejs
     - apt-get install -y npm
-    - npm install -g @angular/cli
-    - ng lint 
+    - npm install
+    - ng lint
 
 
 lint-test-job:   # This job also runs in the test stage.
