@@ -8,13 +8,13 @@ import { client, room } from '../acccueil/acccueil.component';
   styleUrls: ['./session.component.css']
 })
 export class SessionComponent {
-  
-  constructor(private router: Router) 
+
+  constructor(private router: Router)
   {
-    room.onStateChange((state) => this.draw(state));
+    room.onStateChange((state: any) => this.draw(state));
   }
 
-  draw(state)
+  draw(state: any)
   {
     if (state.contract == -1) // atout pas encore prix
     {
@@ -39,7 +39,7 @@ export class SessionComponent {
     // celle ci n'est important que pour mettre en accent a qui est le tour dans le front
   }
 
-  handleClick(id)
+  handleClick(id: String)
   {
     if (room.state.contract == -1)
     {
