@@ -11,7 +11,7 @@ export let room: any;
   styleUrls: ['./acccueil.component.css']
 })
 export class AcccueilComponent {
-  username: string = '';
+  username = '';
 
   constructor(private router: Router) {
     // Initialize the client here with your server URL

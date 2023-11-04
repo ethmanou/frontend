@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ReglesComponent implements OnInit {
 
-  showVideo: boolean = false;
+  showVideo = false;
 
   constructor() { }
 
