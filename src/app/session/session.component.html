@@ -1,56 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="session.component.css">
-</head>
-<body>
-    <header>
-        <div class="header-title-container">
-            <h1>Hunt the Ace</h1>
+<div class="table">
+  <div class="score-container">
+    <table class="score-table">
+      <tr>
+        <th>Team Bleue</th>
+        <th>Team Rouge</th>
+      </tr>
+      <tr>
+        <td>{{ scoreTeamBlue }}</td>
+        <td>{{ scoreTeamRed }}</td>
+      </tr>
+    </table>
+  </div>  
+    <div class="north">
+      <div *ngIf="playerId !== 'north'">
+        <!-- Image de dos de carte pour les autres joueurs -->
+        <img src="assets/img/back.jpg" alt="Dos de carte" class="card-back" style="width: 50px; height: 70px;">      
+      </div>
+    </div>
+    <div class="player west">
+      
+      <div *ngIf="playerId !== 'west'">
+        <!-- Image de dos de carte pour les autres joueurs -->
+        <img src="assets/img/back.jpg" alt="Dos de carte" class="card-back" style="width: 50px; height: 70px;">      
+      </div>
+    </div>
+    
+    <div class="player east">
+      <div *ngIf="playerId !== 'east'">
+        <!-- Image de dos de carte pour les autres joueurs -->
+        <img src="assets/img/back.jpg" alt="Dos de carte" class="card-back" style="width: 50px; height: 70px;">      
+      </div>
+    </div>
+    <div class="player south">
+      <div *ngIf="playerId === 'south'">
+        <!-- Contenu du joueur Sud -->
+        <h3>Joueur Sud</h3>
+        <div class="hand">
+          <div *ngFor="let card of player1Hand" class="card" (click)="handleClick(card)">
+            <img [src]="'assets/img/' + card + '.png'" alt="{{ card }}">
+          </div>
         </div>
-        <div class="header-round-info-container">
-            <div class="header-img-container">
-                <img src="/images/AceSpades.png" alt="" class="header-img">
-            </div>
-            <div class="header-score-container">
-                <h2 class="score">Score&nbsp;<span class="badge">0</span></h2>
-            </div>
-            <div class="header-round-container">
-                <h2 class="round">Round&nbsp;<span class="badge">0</span></h2>
-            </div>
+      </div>
+        <div class="dialog-box" *ngIf="showDialog">
+          <img src="/assets/img/{{atout}}.png" alt="Carte d'atout" style="width: 100px; height: 150px;">          
+          <button (click)="passer()">Passer</button>
+          <button (click)="prendre()">Prendre</button>
         </div>
-        <div class="header-status-info-container">
-            <p class="current-status">
-                Click 'Play Game' button to play game
-            </p>
-        </div>
-        <div class="header-button-container">
-            <div class="game-play-button-container">
-                <button id = "playGame" class="play-game">Play Game</button>
-            </div>
-        </div>
-    </header>
-    <main>
-        <div class="card-container">
-            <div class="card-pos-a">
+        <div class="player-turn-message" *ngIf="isPlayerTurn()">
+          C'est votre tour !
+        </div>        
+      <div *ngIf="playerId !== 'south'">
+        <!-- Image de dos de carte pour les autres joueurs -->
+        <img src="assets/img/back.jpg" alt="Dos de carte" class="card-back" class="atout-card">
+    </div>
+    </div>
 
+    <div class="milieu">
+      <div class="played-card">
+        <ng-container *ngIf="playedCards.length <= 4 ; else hideCards">
+          <div *ngFor="let card of playedCards">
+            <img [src]="'assets/img/' + card + '.png'" alt="{{ card }}" (click)="handleClick(card)">
+          </div>
+        </ng-container>
+        <ng-template #hideCards>
+          <!-- Animation pour cacher les cartes -->
+          <div class="hidden-cards" [@hideAnimation] >
+            <div *ngFor="let card of playedCards; let i = index" [@slideAnimation]="i">
+              <img [src]="'assets/img/' + card + '.png'" alt="{{ card }}">
             </div>
-            <div class="card-pos-b">
-                
-            </div>
-            <div class="card-pos-c">
-                
-            </div>
-            <div class="card-pos-d">
-                
-            </div>
-        </div>
-    </main>
-    <script src="session.component.spec.ts"></script>
-</body>
-</html>
-
+          </div>
+        </ng-template>
+      </div>
+</div>
+      
+      
+  </div>
+  

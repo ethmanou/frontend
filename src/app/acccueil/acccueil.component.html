@@ -17,10 +17,10 @@
                     <div class="form-container">
                         <div class="form-group">
                             <label for="username" style="font-size: 16px; font-weight: 600; line-height: 1.5; color: #012052;">Pseudo</label>
-                            <input id="username" name="username" type="text" required class="input-text">
+                            <input id="username" [(ngModel)]="username" type="text" required class="input-text">
                         </div>
                         <div class="form-group">
-                            <button onclick="handleClick()">PLAY</button>
+                            <button (click)="handleClick()">PLAY</button>
                         </div>
                     </div>
 

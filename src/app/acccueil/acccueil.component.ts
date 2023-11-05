@@ -18,7 +18,7 @@ export class AcccueilComponent {
   }
 
   async handleClick() {
-    room = await client.joinOrCreate('Belote');
+    room = await client.joinOrCreate('Belote', {username: this.username});
     this.router.navigate(['session'], { queryParams: { username: this.username } });
   }
 }

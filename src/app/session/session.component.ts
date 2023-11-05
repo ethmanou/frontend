@@ -9,47 +9,102 @@ import { client, room } from '../acccueil/acccueil.component';
 })
 export class SessionComponent {
 
+  playerId: string = "south";
+  player1Hand: string[] = []; // Déclarez les cartes de la main du joueur 1
+  direction: String = "";
+  playedCards: string[] = [];
+  scoreTeamBlue: number | undefined ;
+  scoreTeamRed: number | undefined;
+  showDialog: boolean = false;
+  atout : string = "";
+
+
+
   constructor(private router: Router)
   {
-    room.onStateChange((state: any) => this.draw(state));
+
+
+
+    room.state.onChange((state: any) => this.draw(state));
+
+
   }
 
-  draw(state: any)
+
+  team(dir: string)
   {
-    if (state.contract == -1) // atout pas encore prix
-    {
-      // atout est dans state.trump
-      // les cartes du joueurs sont dans state.[North ou South ou East ou West].hands
-      // le tour est dans state.turn
-      // score dans state.teamBlue et state.teamRed
-    }
-    else // manches
-    {
-      // les cartes du joueurs sont dans state.[North ou South ou East ou West].hands
-      // cartes joues sur table sont state.chosen contenant {"North": "5D"} etc
-      // cartes choisies par le joueur state.[North ou South ou East ou West].chosenCard
-      // le tour est dans state.turn
-      // score dans state.teamBlue et state.teamRed
-      // numero de plie dans state.fold
-    }
-
-    // IMPORTANT: tu dois savoir la direction de ce joueur, soit North, South, East ou West
-    // donc cherce dans state.North, state.South etc celle qui nest pas vide
-    // quelque soit la direction il est toujours en bas dans le front end, et les autres sont dans la direction de la montre comme ca North -> East -> South -> West
-    // celle ci n'est important que pour mettre en accent a qui est le tour dans le front
+      if (dir === "North" || dir === "South")
+        return 0;
+      else
+        return 1;
   }
 
-  handleClick(id: String)
+  // Fonction pour gérer l'affichage en fonction de l'état du jeu
+  draw(state: any) {
+    if(Object.values(room.state.toJSON()["North"]).length != 0)
+      this.direction = "North";
+    if(Object.values(room.state.toJSON()["South"]).length != 0)
+      this.direction = "South";
+    if(Object.values(room.state.toJSON()["East"]).length != 0)
+      this.direction = "East";
+    if(Object.values(room.state.toJSON()["West"]).length != 0)
+      this.direction = "West";
+
+    if (room.state.toJSON().contract === -1) {
+      // Atout pas encore choisi
+      const trump = room.state.toJSON().trump;
+      this.atout = trump;
+      // @ts-ignore
+      this.player1Hand = room.state.toJSON()[this.direction].hand; // Remarque : Assurez-vous que this.playerId est correctement défini
+      this.showDialog = room.state.turn === this.direction;
+
+    } else {
+      // @ts-ignore
+      this.player1Hand = room.state.toJSON()[this.direction].hand; // Remarque : Assurez-vous que this.playerId est correctement défini
+
+      this.playedCards = room.state.toJSON().table;
+
+
+      this.scoreTeamBlue = room.state.teamBlueScore;
+      this.scoreTeamRed = room.state.teamRedScore;
+
+    }
+  }
+
+  handleClick(card: String )
   {
-    if (room.state.contract == -1)
-    {
-      room.send("action", {take: true}); // ou bien false pour specifier si le joueur accept l atout
-    }
-    else // manche
-    {
-      room.send("action", {chosen: id}); // la carte choisie (ou clicker)
-      // moi qui gere si son tour ou non, pas de souci
-      // id="5S" par exeeple
-    }
+   if(room.state.turn === this.direction){
+    room.send("action", {chosen: card});
   }
+  }
+
+  isPlayerTurn(): boolean {
+    // Vérifiez si c'est le tour du joueur actuel (utilisez l'état de la salle Colyseus)
+    if (room.state.turn === this.direction) {
+      return true;
+    }
+    return false;
+  }
+
+
+
+
+
+
+  passer() {
+    // Logique pour l'action "passer"
+    this.showDialog = false;
+    room.send("action", {take: false})
+  }
+
+  prendre() {
+    // Logique pour l'action "prendre"
+    this.showDialog = false;
+    room.send("action", {take: true})
+  }
+
+
+
+
+
 }
