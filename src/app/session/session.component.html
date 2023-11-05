@@ -1,0 +1,60 @@
+<div class="table">
+    <div class="north">
+      <div *ngIf="playerId !== 'north'">
+        <!-- Image de dos de carte pour les autres joueurs -->
+        <img src="assets/img/back.jpg" alt="Dos de carte" class="card-back" style="width: 50px; height: 70px;">      
+      </div>
+    </div>
+    <div class="player west">
+      
+      <div *ngIf="playerId !== 'west'">
+        <!-- Image de dos de carte pour les autres joueurs -->
+        <img src="assets/img/back.jpg" alt="Dos de carte" class="card-back" style="width: 50px; height: 70px;">      
+      </div>
+    </div>
+    
+    <div class="player east">
+      <div *ngIf="playerId !== 'east'">
+        <!-- Image de dos de carte pour les autres joueurs -->
+        <img src="assets/img/back.jpg" alt="Dos de carte" class="card-back" style="width: 50px; height: 70px;">      
+      </div>
+    </div>
+    <div class="player south">
+      <div *ngIf="playerId === 'south'">
+        <!-- Contenu du joueur Sud -->
+        <h3>Joueur Sud</h3>
+        <div class="hand">
+          <div *ngFor="let card of player1Hand" class="card" (click)="handleClick(card)">
+            <img [src]="'assets/img/' + card + '.png'" alt="{{ card }}">
+          </div>
+        </div>
+      </div>
+      <div *ngIf="playerId !== 'south'">
+        <!-- Image de dos de carte pour les autres joueurs -->
+        <img src="assets/img/back.jpg" alt="Dos de carte" class="card-back" style="width: 50px; height: 70px;">
+    </div>
+    </div>
+
+    <div class="milieu">
+      <div class="played-card">
+        <ng-container *ngIf="playedCards.length <= 4 ; else hideCards">
+          <div *ngFor="let card of playedCards">
+            <img [src]="'assets/img/' + card + '.png'" alt="{{ card }}" (click)="handleClick(card)">
+          </div>
+        </ng-container>
+        <ng-template #hideCards>
+          <!-- Animation pour cacher les cartes -->
+          <div class="hidden-cards" [@hideAnimation] >
+            <div *ngFor="let card of playedCards; let i = index" [@slideAnimation]="i">
+              <img [src]="'assets/img/' + card + '.png'" alt="{{ card }}">
+            </div>
+          </div>
+        </ng-template>
+      </div>
+</div>
+
+      
+      
+      
+  </div>
+  

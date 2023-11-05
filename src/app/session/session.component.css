@@ -1,0 +1,183 @@
+/* Ajoutez ces styles à votre fichier CSS */
+
+
+.table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: contain;
+    padding: 20px;
+  }
+  
+  
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .scoreboard {
+    text-align: center;
+    margin-right: 20px;
+  }
+  
+  .team-score {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .table {
+    display: flex;
+    align-items: center;
+  }
+  
+  .player {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .hand {
+    display: flex;
+  }
+  
+  /* Classe CSS pour les mains des joueurs Est et Ouest */
+  .vertical-hand {
+    display: flex;
+    flex-direction: column; /* Les cartes s'afficheront verticalement */
+    align-items: center;
+  }
+  
+  .card {
+    border: 1px solid #000;
+    width: 50px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  /* Classe CSS pour les cartes retournées */
+  .returned-card {
+    transform: rotate(180deg); /* Rotation de 180 degrés pour retourner la carte */
+  }
+  
+  
+  
+  .played-card {
+    border: 1px solid #000;
+    width: 50px; /* Ajustez la largeur à votre convenance */
+    height: 70px; /* Ajustez la hauteur à votre convenance */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  /* Positionnement des joueurs */
+  .north {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .west {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+  }
+  
+  .milieu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  
+  .east {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+  
+  .south {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .hidden-cards {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slideRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slideLeft {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+  }
+  

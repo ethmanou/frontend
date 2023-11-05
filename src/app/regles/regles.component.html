@@ -1,0 +1,84 @@
+<div class="video-container" *ngIf="showVideo">
+  <iframe
+    width="100%"
+    height="100%"
+    src="https://www.youtube.com/embed/MxVIPpr4BD8"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+  ></iframe>
+</div>
+<div class="button-container" *ngIf="!showVideo">
+  <h1>Welcome to the Video Page</h1>
+  <button (click)="playVideo()">Click to watch the video</button>
+</div>
+<div class="belote-rules-container">
+  <div class="rule-section">
+    <h2>The belote is the most popular card game in France.</h2>
+    <h2>The belote is played with 4 players divided into two teams (North / South versus East / West) and uses a set of 32 classic cards (8 per player).</h2>
+    <p>To play the Belote:
+      <li>- Need 4 players</li>
+      <li>- Number of cards = 32</li>
+      </p>
+    <h2>The goal of belote game :</h2> 
+    <p>Belote is a game of contract. The team that "takes" the contract must reach 82 points minimum to win. If this total is reached, each team scores the points it has made. If the team fails to reach the 82 points, it does not score a point, the 162 points will be awarded to the opponents. The total number of possible points (cards and ten der) in the folds is 162 points. The game ends when one of the team reaches a minimum of 501 points. If both teams exceed 501 points, the team with the highest score wins the match.
+    </p> 
+    <h2>Value and order of Belote cards :</h2>
+    <p><table>
+      <tr>
+        <th>Trump</th>
+        <th>No Trump</th>
+      </tr>
+      <tr>
+        <td>Jack</td>
+        <td>20 points</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>14 points</td>
+      </tr>
+      <tr>
+        <td>Ace</td>
+        <td>11 points</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>10 points</td>
+      </tr>
+      <tr>
+        <td>King</td>
+        <td>4 points</td>
+      </tr>
+      <tr>
+        <td>Queen</td>
+        <td>3 points</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>0 point</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>0 point</td>
+      </tr>
+    </table>
+  
+  <h2>The distribution of cards :</h2>
+  <p>The cards are distributed in two phases. In the first phase, each player receives 5 cards. A card in the middle of the table is then placed face up in the middle of the table. The card is considered the color of the trump. The first player located after the dealer choose to "take" or not take the trump card. If the player does not take, it is up to the next player to take the card or not. If, in the first round, one of the players decides to take the trump, the game begins. If none of the players want to take on, then the first player may choose to announce another color, different from the card on the field. If he does not say anything, the next player can choose his asset color. If one player chooses the color, the game can begin.</p>
+    <p>If no player takes the first and second turns, the cards are redistributed.</p>
+    <p>When a player decides to take, he receives 2 additional cards and the other players receive 3 additional cards. All players should have 8 cards each.</p>
+  <h2>How to play the game:</h2>  
+  <p>The player to the dealer's left begins the turn with a card of his choice. Each player must play the card with the requested color. If a player can not provide a card of that color, he must necessarily play a card in the trump color. If he does not have an asset, he can play another card in another color.</p>
+
+    <p>In some cases, it is possible not to play the trump. If a player's partner card is the strongest on the table and the player does not have the color to follow. The player who wins the turn plays the first card of the next turn. The strengths are always stronger than the others.</p>
+    
+    <p>When two players cut, the second player must necessarily overtake, that is, provide a stronger trump than the one already on the table. If he does not have a stronger asset, he must still provide an asset if he has one.</p>
+  <h2>How to count the points at the Belote ?</h2>
+  <p>The team that took the contract must collect more points than the other team and must have at least 82 points. The last fold is worth 10 extra points ("the 10 of der"). For the 32 cards, we have 152 points. And add the "10 of der or 162 points in total.
+If the attacking team reaches a minimum of 82 points, each team scores the points it has obtained.
+Example: The attacking team wins 110 points, so the defense team gets 52 points.
+Here is an exception. If a Belote and Rebelote is announced then the goal of the contract is 92 points, not 82 points. In addition, the team that announced the Belt andt Rebelote earned 20 bonus points. Belote and rebelote is bonus that the team gets when a player has the king and trump and playing each of those cards say "belote" and "rebelote". If the team has taken all the folds of the game, a bonus of 90 points is granted. The winning team gets 252 points of Capot (In case of "Capot", ie if the opponent has not won any fold, the 10 of der is worth 100 points instead of 10).
+If the contract has not been made, the team makes a contract to get only belote points, if you have one, and the opposing team scores 162 points and points belote</p>  
+  </div>
+  </div>
+
